@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+<!--    <meta charset="UTF-8">-->
+    <title>Bass Care</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<ul>
+    <li><h1>Welcome to Bass Care</h1></li>
+    <li><a th:href="@{/users}"></a></li>
+    <li><a th:href="@{/register}">Register</a></li>
+    <li><a th:href="@{/login}">Log In</a></li>
+</ul>
+<div id="content_div">
+    <div class="collapsible">
+        <button type="button">Appointments</button>
+        <p class="content">time: 1:00PM
+            newPatient: yes
+            sick: no
+            clinic: Leblanc
+            doctor: Tae Takemi
+            Full Name: Ren Amamiya
+            reason: I need new medication.
+            insurancePlan: N/A
+            medicalRecords: N/A
+            medication: N/A</p>
+    </div>
+
+    <div class="collapsible">
+        <button type="button">Notes</button>
+        <p class="content">Notes</p>
+    </div>
+</div>
+</body>
+<script src="main.js"></script>
+</html>

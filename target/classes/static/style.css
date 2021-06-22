@@ -1,0 +1,64 @@
+body {
+  background-color: rgb(235, 235, 255);
+}
+
+ul {
+  background-color: rgb(108, 105, 141);
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+ul li {
+  display: inline;
+}
+
+ul li a{
+  border: 2px;
+  font-size: large;
+  color: rgb(43, 41, 41);
+}
+
+ul li h1{
+  color: rgb(43, 41, 41);
+}
+
+#content_div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  bottom: 16px;
+}
+
+.collapsible {
+    width: 50%;
+}
+.collapsible > button {
+    width: 100%;
+    background-color: rgb(108, 105, 141);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 4px;
+    border-style: outset;
+    text-align: center;
+    font-size: 15px;
+  }
+.collapsible > button:hover {
+  background-color: rgb(179, 179, 198);
+}
+
+.content {
+  padding: 0 14px;
+  white-space: pre-line;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2 ease-out;
+}
+
+.active {
+    max-height: 100%;
+    background-color: rgb(149, 147, 182);
+}
+

@@ -9,7 +9,7 @@
         <module name="Medical_Management_Website" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="16">
       <module name="Medical_Management_Website" target="16" />
     </bytecodeTargetLevel>
   </component>
