@@ -1,8 +1,8 @@
-var coll = document.querySelectorAll(".collapsible > button")
+var collapsible = document.querySelectorAll(".collapsible > button")
 var i;
 
-for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function () {
+for (i = 0; i < collapsible.length; i++) {
+    collapsible[i].addEventListener("click", function () {
         var content = this.nextElementSibling;
         content.classList.toggle("active")
 
