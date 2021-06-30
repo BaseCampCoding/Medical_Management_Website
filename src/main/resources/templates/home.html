@@ -19,21 +19,18 @@
 <div id="content_div">
     <div class="collapsible">
         <button type="button">Appointments</button>
-        <p class="content">time: 1:00PM
-            newPatient: yes
-            sick: no
-            clinic: Leblanc
-            doctor: Tae Takemi
-            Full Name: Ren Amamiya
-            reason: I need new medication.
-            insurancePlan: N/A
-            medicalRecords: N/A
-            medication: N/A</p>
+        <section class="content" th:each="appointment: ${appointmentList}">
+            <p th:text="${appointment.appointmentDetails}"></p>
+        </section>
     </div>
 
     <div class="collapsible">
         <button type="button">Notes</button>
-        <p class="content">Notes</p>
+        <section class="content">
+            <p class="text-spacing">Notes that a doctor would write
+                as they are the doctor writing the note. ;)
+            </p>
+        </section>
     </div>
 </div>
 </body>

@@ -4,7 +4,9 @@ var i;
 for (i = 0; i < collapsible.length; i++) {
     collapsible[i].addEventListener("click", function () {
         var content = this.nextElementSibling;
-        content.classList.toggle("active")
-
+        while(content){
+                content.classList.toggle("active");
+                content = content.nextElementSibling;
+        }
     })
 }

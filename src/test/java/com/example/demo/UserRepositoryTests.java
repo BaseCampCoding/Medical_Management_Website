@@ -22,12 +22,29 @@ public class UserRepositoryTests {
     private UserRepository repository;
 
     @Test
-    public void testCreateUser() {
+    public void testCreateDoctor() {
         User user = new User();
-        user.setEmail("ravikumar@gmail.com");
-        user.setPassword("ravi2020");
-        user.setFirstName("Ravi");
-        user.setLastName("Kumar");
+        user.setEmail("goresh@gmail.com");
+        user.setPassword("goresh2020");
+        user.setFirstName("gor");
+        user.setLastName("esh");
+        user.setRole("doctor");
+
+        User savedUser = repository.save(user);
+
+        User existUser = entityManager.find(User.class, savedUser.getId());
+
+        assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
+    }
+
+    @Test
+    public void testCreatePatient() {
+        User user = new User();
+        user.setEmail("gohan@gmail.com");
+        user.setPassword("gohan2020");
+        user.setFirstName("gohan");
+        user.setLastName("son");
+        user.setRole("patient");
 
         User savedUser = repository.save(user);
 

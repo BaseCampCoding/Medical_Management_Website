@@ -13,12 +13,23 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private AppointmentRepository appointmentRepository;
+
     @GetMapping("")
-    public String viewHomePage() {
+    public String viewHomePage(Model model) {
+        Appointment appoint = new Appointment();
+        model.addAttribute("appointmentList", appointmentRepository.findAll());
         return "home";
+    }
+
+    @GetMapping("/createApp")
+    public String showAppointmentForm(){
+        return "appointment_form";
     }
 
     @GetMapping("/register")
