@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+<!--    <meta charset="UTF-8">-->
+    <title>Bass Care</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<ul>
+    <li><h1>
+        Welcome [[${#request.userPrincipal.principal.fullName}]]
+        </h1></li>
+    <li><a th:href="@{/scheduling}">Schedule Appointment</a></li>
+</ul>
+<div id="content_div">
+    <div class="collapsible">
+        <button type="button">Appointments</button>
+        <section class="content" th:each="appointment: ${appointmentList}">
+            <p>Time:  <span th:text="${appointment.time}"></span></p>
+            <p th:if="${appointment.newPCP == True}">New PCP: <span>yes</span></p>
+            <p th:unless="${appointment.newPCP == True}">New PCP: <span>no</span></p>
+            <p th:if="${appointment.sick == True}">Sick: <span>yes</span></p>
+            <p th:unless="${appointment.sick == True}">Sick: <span>no</span></p>
+            <p>Clinic:  <span th:text="${appointment.clinic}"></span></p>
+            <p>Doctor:  <span th:text="${appointment.doctor.getFullName}"></span></p>
+            <p>Reason:  <span th:text="${appointment.reason}"></span></p>
+            <p>Insurance Plan:  <span th:text="${appointment.insurancePlan} ?: 'N/A'"></span></p>
+            <p>Medical Records:  <span th:text="${appointment.medicalRecords} ?: 'N/A'"></span></p>
+            <p>Medication:  <span th:text="${appointment.medication} ?: 'N/A'"></span></p>
+        </section>
+    </div>
+
+    <div class="collapsible">
+        <button type="button">Notes</button>
+        <section class="content">
+            <p class="text-spacing">Notes that a doctor would write. ;)</p>
+        </section>
+    </div>
+</div>
+</body>
+<script th:src="@{main.js}"></script>
+</html>

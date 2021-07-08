@@ -12,7 +12,7 @@
   <div>
     <h1>User Registration - Sign Up</h1>
   </div>
-  <form th:action="@{/process_register}" th:object="${user}"
+  <form id="signup" th:action="@{/process_register}" th:object="${user}"
         method="post" style="max-width: 600px; margin: 0 auto;">
     <div class="m-3">
       <div class="form-group row">
@@ -46,11 +46,22 @@
         </div>
       </div>
 
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Are you a doctor or a patient? </label>
+        <div class="col-8">
+          <select class="form-control" th:field="*{role}">
+            <option th:value="patient" th:text="patient"></option>
+            <option th:value="doctor" th:text="doctor"></option>
+          </select>
+        </div>
+      </div>
+
       <div>
         <button type="submit" class="btn btn-primary">Sign Up</button>
       </div>
     </div>
   </form>
 </div>
+<script th:src="@{singUp.js}"></script>
 </body>
 </html>

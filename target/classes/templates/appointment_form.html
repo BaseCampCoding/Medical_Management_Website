@@ -3,57 +3,96 @@
   <head>
     <meta charset="ISO-8859-1">
     <title>Appointment Scheduling</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/style.css}">
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
   </head>
   <body>
-<!--
-Time
-New Patient
-Sick
-Clinic
-Doctor
-Reason
-Insurance Plan
-Medical Records
-Medication-->
+
   <div class="container text-center">
     <div>
       <h3>Appointment Scheduling</h3>
     </div>
-    <form th:action="@{/schedule_appointment}" th:object="${appointments}"
+    <form th:action="@{/process_appointment}" th:object="${appointment}"
           method="post">
       <div class="m-3">
         <div class="form-group row">
-          <label class="col-4 col-form-label">Time: </label>
+          <label class="col-4 col-form-label">What time would you like to schedule? </label>
           <div class="col-8">
             <input type="text" th:field="*{time}" class="form-control"
-                   required minlength="3" maxlength="5"/>
+                   required minlength="6" maxlength="7" placeholder="2:00PM"/>
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-4 col-form-label">New Patient: </label>
+          <label class="col-4 col-form-label">Are you a new patient? </label>
           <div class="col-8">
-            <input type="checkbox" th:field="*{newPatient}" class="form-control" required/>
+            <input type="checkbox" th:field="*{newPatient}" class="form-control"/>
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-4 col-form-label">First Name: </label>
+          <label class="col-4 col-form-label">Do you want a new primary care provider? </label>
           <div class="col-8">
-            <input type="checkbox" th:field="*{checkbox}" class="form-control"
-                   required minlength="2" maxlength="20"/>
+            <input type="checkbox" th:field="*{newPCP}" class="form-control" />
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-4 col-form-label">Last Name: </label>
+          <label class="col-4 col-form-label">Are you sick? </label>
           <div class="col-8">
-            <input type="checkbox" th:field="*{lastName}" class="form-control"
-                   required minlength="2" maxlength="20" />
+            <input type="checkbox" th:field="*{sick}" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-4 col-form-label">What clinic would you like to go to? </label>
+          <div class="col-8">
+            <input type="text" th:field="*{clinic}" class="form-control"
+                   required maxlength="100" placeholder="Takemi Clinic"/>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-4 col-form-label">Which doctor do you want to schedule with? </label>
+          <div class="col-8">
+            <select class="form-control" th:field="*{doctor.id}">
+              <option value="0">select doctor</option>
+              <option th:each="doctor: ${doctorList}" th:value="${doctor.id}" th:text="${doctor.getFullName}"></option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-4 col-form-label">Why are you scheduling? </label>
+          <div class="col-8">
+            <input type="text" th:field="*{reason}" class="form-control"
+                   required placeholder="Pain and discomfort."/>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-4 col-form-label">Do you have an insurance plan? (Optional) </label>
+          <div class="col-8">
+            <input type="text" th:field="*{insurancePlan}" class="form-control"
+                   placeholder="HMO" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-4 col-form-label">Do you have any medical records? (Optional) </label>
+          <div class="col-8">
+            <input type="text" th:field="*{medicalRecords}" class="form-control"
+                   placeholder="Any details will do for now." />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-4 col-form-label">Is there any medication you take? (Optional) </label>
+          <div class="col-8">
+            <input type="text" th:field="*{medication}" class="form-control"
+                   placeholder="Synthroid, Crestor, etc" />
           </div>
         </div>
 

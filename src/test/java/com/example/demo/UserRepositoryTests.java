@@ -24,10 +24,10 @@ public class UserRepositoryTests {
     @Test
     public void testCreateDoctor() {
         User user = new User();
-        user.setEmail("goresh@gmail.com");
-        user.setPassword("goresh2020");
-        user.setFirstName("gor");
-        user.setLastName("esh");
+        user.setEmail("doctor@gmail.com");
+        user.setPassword("doctor020");
+        user.setFirstName("doctor");
+        user.setLastName("doctor");
         user.setRole("doctor");
 
         User savedUser = repository.save(user);
@@ -40,10 +40,10 @@ public class UserRepositoryTests {
     @Test
     public void testCreatePatient() {
         User user = new User();
-        user.setEmail("gohan@gmail.com");
-        user.setPassword("gohan2020");
-        user.setFirstName("gohan");
-        user.setLastName("son");
+        user.setEmail("patient@gmail.com");
+        user.setPassword("patient2020");
+        user.setFirstName("patient");
+        user.setLastName("sickly");
         user.setRole("patient");
 
         User savedUser = repository.save(user);

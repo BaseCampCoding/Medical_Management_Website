@@ -44,10 +44,10 @@ public class Appointment {
     @Column(nullable = true, length = 60)
     String insurancePlan;
 
-    @Column(nullable = true)
+    @Column(nullable = true, length = 60)
     String medicalRecords;
 
-    @Column(nullable = true)
+    @Column(nullable = true, length = 60)
     String medication;
 
 
