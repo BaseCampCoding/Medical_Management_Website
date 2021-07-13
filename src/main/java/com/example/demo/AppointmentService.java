@@ -16,10 +16,11 @@ public class AppointmentService {
     @Autowired
     private UserRepository userRepo;
 
-//    public List<Appointment> listAll(Long ID) {return userRepo.findPatientById(ID);}
+    public List<Appointment> listAll(Long ID) {return appRepo.findAppointmentByPatientId(ID);}
 
     public Appointment get(Long id) {
         return appRepo.findById(id).get();
     }
+
 
 }

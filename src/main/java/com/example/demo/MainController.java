@@ -35,8 +35,12 @@ public class MainController {
 
     @GetMapping("/content")
     public String viewAppointmentAndNotesPage(Model model) {
-        Appointment appoint = new Appointment();
-        model.addAttribute("appointmentList", appointmentRepository.findAll());
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails)auth.getPrincipal();
+        Long patientId = customUser.getId();
+
+        model.addAttribute("appointmentList", appointmentRepository.findAppointmentByPatientId(patientId));
         return "content";
     }
 
@@ -45,6 +49,7 @@ public class MainController {
 
         model.addAttribute("doctorList", userRepository.findAllDoctors());
         model.addAttribute("appointment", new Appointment());
+
 
         return "appointment_form";
     }
